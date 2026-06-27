@@ -1,0 +1,35 @@
+====================================================================================================
+STYLE TRANSFER BENCHMARK — INFERENCE TIMES (Resolution: 1024x1024)
+====================================================================================================
+
+Model: AA (SDXL Lightning)
+----------------------------------------------------------------------------------------------------
+  no_adapter                avg=1.1358s (25 inferences) | VRAM: 13.10 GB | Params:  3.47 B
+  only_ip_adapter           avg=1.1729s (25 inferences) | VRAM: 17.19 GB | Params:  5.67 B
+  only_controlnet           avg=1.0893s (25 inferences) | VRAM: 16.59 GB | Params:  4.72 B
+  controlnet_ip_adapter     avg=1.1974s (25 inferences) | VRAM: 20.69 GB | Params:  6.92 B
+  OVERALL                   avg=1.1489s (100 total)
+
+Model: BB (SDXL Turbo)
+----------------------------------------------------------------------------------------------------
+  no_adapter                avg=0.8974s (25 inferences) | VRAM: 13.10 GB | Params:  3.47 B
+  only_ip_adapter           avg=0.9414s (25 inferences) | VRAM: 17.20 GB | Params:  5.67 B
+  only_controlnet           avg=0.7664s (25 inferences) | VRAM: 16.60 GB | Params:  4.72 B
+  controlnet_ip_adapter     avg=0.8659s (25 inferences) | VRAM: 20.69 GB | Params:  6.92 B
+  OVERALL                   avg=0.8678s (100 total)
+
+Model: CC (Base SDXL)
+----------------------------------------------------------------------------------------------------
+  no_adapter                avg=6.4215s (25 inferences) | VRAM: 13.10 GB | Params:  3.47 B
+  only_ip_adapter           avg=6.6714s (25 inferences) | VRAM: 17.20 GB | Params:  5.67 B
+  only_controlnet           avg=9.3409s (25 inferences) | VRAM: 16.66 GB | Params:  4.72 B
+  controlnet_ip_adapter     avg=9.6479s (25 inferences) | VRAM: 20.75 GB | Params:  6.92 B
+  OVERALL                   avg=8.0204s (100 total)
+
+Model: DD (FLUX.1-dev)
+----------------------------------------------------------------------------------------------------
+  no_adapter                avg=29.7994s (25 inferences) | VRAM: 37.21 GB | Params: 16.87 B
+  only_ip_adapter           avg=31.0471s (25 inferences) | VRAM: 42.96 GB | Params: 19.94 B
+  only_controlnet           avg=34.9551s (25 inferences) | VRAM: 42.71 GB | Params: 20.10 B
+  controlnet_ip_adapter     avg=35.1540s (25 inferences) | VRAM: 42.71 GB | Params: 21.74 B
+  OVERALL                   avg=32.7389s (100 total)

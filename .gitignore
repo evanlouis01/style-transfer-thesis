@@ -1,0 +1,13 @@
+# Reference
+reference/
+
+# Test Images
+images/
+
+# Other Files
+instructions.md
+
+# Env
+.env
+venv/
+variables.py

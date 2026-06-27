@@ -1,0 +1,95 @@
+# ============================================================
+# Style Transfer Benchmark Configuration
+# ============================================================
+
+# --- Paths ---
+paths:
+  content_dir: "images/content"
+  style_dir: "images/style"
+  style_prompts_csv: "images/style_prompts.csv"
+  results_dir: "results"
+
+# --- Image Settings ---
+image:
+  resolution: 1024
+  cell_size: 256          # cell size for result grids
+
+# --- Inference Defaults ---
+inference:
+  seed: 42
+  negative_prompt: "low quality, blurry, distorted"
+  canny_low: 100
+  canny_high: 200
+  controlnet_conditioning_scale: 0.8
+  ip_adapter_scale: 0.9
+  strength: 0.95            # img2img strength when ControlNet is NOT used
+
+# --- Model Configurations ---
+models:
+  AA:
+    name: "SDXL Lightning"
+    type: "sdxl"
+    base_repo: "stabilityai/stable-diffusion-xl-base-1.0"
+    unet_repo: "ByteDance/SDXL-Lightning"
+    unet_ckpt: "sdxl_lightning_4step_unet.safetensors"
+    controlnet_repo: "diffusers/controlnet-canny-sdxl-1.0"
+    ip_adapter_repo: "h94/IP-Adapter"
+    ip_adapter_subfolder: "sdxl_models"
+    ip_adapter_weight: "ip-adapter_sdxl.bin"
+    scheduler: "EulerDiscreteScheduler"
+    scheduler_kwargs:
+      timestep_spacing: "trailing"
+    num_inference_steps: 4
+    guidance_scale: 0.0
+
+  BB:
+    name: "SDXL Turbo"
+    type: "sdxl"
+    base_repo: "stabilityai/sdxl-turbo"
+    unet_repo: null
+    unet_ckpt: null
+    controlnet_repo: "diffusers/controlnet-canny-sdxl-1.0"
+    ip_adapter_repo: "h94/IP-Adapter"
+    ip_adapter_subfolder: "sdxl_models"
+    ip_adapter_weight: "ip-adapter_sdxl.bin"
+    scheduler: "EulerAncestralDiscreteScheduler"
+    scheduler_kwargs: {}
+    num_inference_steps: 2
+    guidance_scale: 0.0
+
+  CC:
+    name: "Base SDXL"
+    type: "sdxl"
+    base_repo: "stabilityai/stable-diffusion-xl-base-1.0"
+    unet_repo: null
+    unet_ckpt: null
+    controlnet_repo: "diffusers/controlnet-canny-sdxl-1.0"
+    ip_adapter_repo: "h94/IP-Adapter"
+    ip_adapter_subfolder: "sdxl_models"
+    ip_adapter_weight: "ip-adapter_sdxl.bin"
+    scheduler: "EulerDiscreteScheduler"
+    scheduler_kwargs: {}
+    num_inference_steps: 30
+    guidance_scale: 7.5
+
+  DD:
+    name: "FLUX.1-dev"
+    type: "flux"
+    base_repo: "black-forest-labs/FLUX.1-dev"
+    controlnet_repo: "InstantX/FLUX.1-dev-Controlnet-Canny"
+    # IP-Adapter uses InstantX custom files (not diffusers native)
+    ip_adapter_repo: "InstantX/FLUX.1-dev-IP-Adapter"
+    ip_adapter_weight: "ip-adapter.bin"
+    image_encoder_path: "google/siglip-so400m-patch14-384"
+    ip_adapter_num_tokens: 128
+    scheduler: "FlowMatchEulerDiscreteScheduler"
+    scheduler_kwargs: {}
+    num_inference_steps: 28
+    guidance_scale: 3.5
+
+# --- Adapter Variations ---
+variations:
+  - no_adapter
+  - only_ip_adapter
+  - only_controlnet
+  - controlnet_ip_adapter

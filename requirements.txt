@@ -1,0 +1,16 @@
+torch
+torchvision
+diffusers<0.33.0
+transformers<4.49.0
+accelerate
+safetensors
+huggingface_hub
+Pillow
+opencv-python
+numpy
+pyyaml
+lpips
+clean-fid
+torchmetrics
+sentencepiece
+protobuf
